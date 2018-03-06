@@ -1,5 +1,5 @@
 ## Welcome to GitHub Pages
-<script>
+## 
   var userAgent = navigator.userAgent.toLowerCase();
   if (navigator.userAgent.match(/iPhone/i) || userAgent == "xsq_id_ios") {
     var mobiscroll_theme = 'ios',
