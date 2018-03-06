@@ -1,37 +1,41 @@
 ## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/hw1024/mobiscroll/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/hw1024/mobiscroll/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+<script>
+  var userAgent = navigator.userAgent.toLowerCase();
+  if (navigator.userAgent.match(/iPhone/i) || userAgent == "xsq_id_ios") {
+    var mobiscroll_theme = 'ios',
+        mobiscroll_display = 'bottom';
+  } else {
+    var mobiscroll_theme = 'android-holo-light',
+        mobiscroll_display = 'center';
+  }
+  var currYear = (new Date()).getFullYear();    
+  var opt={};
+  opt.date = {preset : 'date'};
+  opt.datetime = {preset : 'datetime'};
+  opt.time = {preset : 'time'};
+  opt.default = {
+    theme: mobiscroll_theme,
+    display: mobiscroll_display,
+    mode: 'scroller',
+    lang:'zh'
+  };
+  opt.default_validator = {
+    theme: mobiscroll_theme,
+    display: mobiscroll_display,
+    mode: 'scroller',
+    lang:'zh',
+    onSet:function(valueText,inst){
+      $('#demo2').data('bootstrapValidator')  
+      .updateStatus('name', 'NOT_VALIDATED',null)  
+      .validateField('name'); 
+    }
+  };
+  var optDateValidator = $.extend(opt['date'], opt['default_validator']);
+  var optDate = $.extend(opt['date'], opt['default']);
+  var optDateTime = $.extend(opt['datetime'], opt['default']);
+  var optTime = $.extend(opt['time'], opt['default']);
+  $("#demo1").mobiscroll(optDateValidator);
+  $("#demo2").mobiscroll(optDateTime);
+  $("#demo3").mobiscroll(optDate);
+  $("#demo4").mobiscroll(optDate);
+  $("#demo5").mobiscroll(optDate);
